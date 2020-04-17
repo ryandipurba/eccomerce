@@ -1,3 +1,5 @@
+import { ADD_PRODUCT } from "../action/type";
+
 const initialState = {
     product: [{
         id: 1,
@@ -40,11 +42,18 @@ const initialState = {
         price: 2000000,
         details: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae quia autem minus assumenda exercitationem sunt ab, et sit architecto',
         urlImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRQ_yvT0I-FW3MxWEwgrXzFS1VNv94QQyAK88mT6gPCFs01wAQB&usqp=CAU'
-    },]
+    },
+    ],
+    productDetails: null,
 }
 
 const productReducer = (state = initialState, action) => {
     switch (action.type) {
+        case ADD_PRODUCT:
+            state.product.push(action.payload)
+            return {
+                ...state
+            }
         default:
             return state
     }
